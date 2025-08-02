@@ -1,44 +1,37 @@
-let jogadores = [
-    { vitorias: 15, derrotas: 5},
-    { vitorias: 50, derrotas: 25},
-    { vitorias: 100, derrotas: 40}
+class Aventureiro{
+    constructor (nome, idade, tipo){
+        this.nome = nome;
+        this.idade = idade;
+        this.tipo = tipo.toLowerCase();
+
+
+    }
+    
+    ataque (){
+
+        const ataques ={
+
+            mago: "magia",
+            guerreiro: "espada",
+            monge: "artes marciais",
+            ninja: "shuriken"
+           
+        };
+        
+        const tipoAtaque = ataques[this.tipo] || "um ataque desconhecido";
+        console.log(`o ${this.tipo} atacou usando ${tipoAtaque}`);
+        
+        
+    }
+}
+
+const listaDeHerois = [
+    new Aventureiro ("Pedro", 43, "guerreiro"),
+    new Aventureiro ("João", 42, "mago"),
+    new Aventureiro ("Paulo", 41, "monge"),
+    new Aventureiro ("Alex", 40, "ninja"),
 ]
 
-for (let i = 0; i < jogadores.length; i++){
-    calculoDePartidas(jogadores[i].vitorias, jogadores[i].derrotas);
-
+for (let i = 0; i < listaDeHerois.length; i++){
+    listaDeHerois[i].ataque();
 }
-
-
-function calculoDePartidas (vitorias, derrotas){
-
-let saldo = vitorias - derrotas
-let nivel = "";
-
-if (vitorias <=10){
-    nivel = "Ferro";
-    
-} else if (vitorias >=11 && vitorias <= 20){
-    nivel = "Bronze";
-}
- else if (vitorias >=21 && vitorias <= 50){
-    nivel = "Prata";
-}
- else if (vitorias >=51 && vitorias <= 80){
-    nivel = "Ouro";
-}
- else if (vitorias >=81 && vitorias <= 90){
-    nivel = "Diamante";
-}
- else if (vitorias >=91 && vitorias <= 100){
-    nivel = "Lendário";
-} else {
-    nivel = "Imortal";
-    
-}
-
-console.log(`O Herói tem saldo de ${saldo} e está no nível de ${nivel}`);
-
-}
-
-
